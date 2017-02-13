@@ -39,9 +39,9 @@ passport.deserializeUser(User.deserializeUser());
 //==========================
 
 console.log("process.env.DATABASEURL = " + process.env.DATABASEURL);
-mongoose.connect(process.env.DATABASEURL);
+//mongoose.connect(process.env.DATABASEURL);
 // c9 connection
-//mongoose.connect("mongodb://localhost/yelp_camp"); // local c9 db
+mongoose.connect("mongodb://localhost/yelp_camp"); // local c9 db
 // mongod connection
 //mongoose.connect("mongodb://oleg:123@ds035438.mlab.com:35438/yelpcamp");
 
