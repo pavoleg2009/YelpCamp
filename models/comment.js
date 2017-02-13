@@ -1,6 +1,6 @@
-var mongoose = require("mongoose");
+// Comment schema setup
 
-//comment
+var mongoose = require("mongoose");
 
 var commentSchema = {
   text: String,

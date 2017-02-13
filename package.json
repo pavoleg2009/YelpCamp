@@ -1,7 +1,7 @@
 {
   "name": "yelpcamp",
-  "version": "1.0.0",
-  "description": "Bootcamp project",
+  "version": "1.0.1",
+  "description": "Bootcamp tutorial project",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

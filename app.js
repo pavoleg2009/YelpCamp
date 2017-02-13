@@ -1,25 +1,25 @@
 var express       = require("express");
 var app           = express();
 var bodyParser    = require("body-parser");
-var mongoose      = require("mongoose");
-var passport      = require("passport");
-var LocalStrategy = require("passport-local");
-var methodOverride= require("method-override");
-var flash         = require("connect-flash");
+var mongoose          = require("mongoose");
+var passport          = require("passport");
+var LocalStrategy     = require("passport-local");
+var methodOverride    = require("method-override");
+var flash             = require("connect-flash");
 
-var Campground    = require("./models/campground");
-var Comment       = require("./models/comment");
-var User          = require("./models/user");
-var seedDB        = require("./seeds");
+var Campground        = require("./models/campground");
+var Comment           = require("./models/comment");
+var User              = require("./models/user");
+var seedDB            = require("./seeds");
 
-var commentRoutes = require("./routes/comments");
-var campgroundRoutes = require("./routes/campgrounds");
-var indexRoutes = require("./routes/index");
+var commentRoutes     = require("./routes/comments");
+var campgroundRoutes  = require("./routes/campgrounds");
+var indexRoutes       = require("./routes/index");
 
-//seedDB(); //стереть и заполнить БД тестовыми данными
+//seedDB(); // clear and fill DB with test data
 
 //==========================
-//PASSPORT CONFIGURATION
+// PASSPORT CONFIGURATION
 //==========================
 
 app.use(require("express-session")({
@@ -35,15 +35,19 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 //==========================
+// DB CONNECT
+//==========================
 
 console.log("process.env.DATABASEURL = " + process.env.DATABASEURL);
+mongoose.connect(process.env.DATABASEURL);
 // c9 connection
 //mongoose.connect("mongodb://localhost/yelp_camp"); // local c9 db
-mongoose.connect(process.env.DATABASEURL);
 // mongod connection
 //mongoose.connect("mongodb://oleg:123@ds035438.mlab.com:35438/yelpcamp");
 
-
+//==========================
+// APP CONFIG
+//==========================
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine","ejs");
@@ -58,7 +62,9 @@ app.use(function(req, res, next){
   next();
 });
 
-
+//================================
+// ROUTERS
+//================================
 
 app.use("/", indexRoutes);
 app.use("/campgrounds", campgroundRoutes);

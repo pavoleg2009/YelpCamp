@@ -1,12 +1,10 @@
+//  Comment routes 
+
 var express         = require("express");
 var router          = express.Router({mergeParams:true})
 var Campground      = require("../models/campground");
 var Comment         = require("../models/comment");
 var middleware      = require("../middleware/index.js");
-
-//================================
-//      COMMENTs ROUTES 
-//================================
 
 // comments new
 router.get("/new", middleware.isLoggedIn, function(req, res){
@@ -19,7 +17,7 @@ router.get("/new", middleware.isLoggedIn, function(req, res){
   })
 })
 
-// create comments
+// create comment
 router.post("/", middleware.isLoggedIn, function(req, res){
   // lookup Campground usting ID
   Campground.findById(req.params.id, function(err, campground){
@@ -79,8 +77,7 @@ router.delete("/:comment_id", middleware.checkCommentOwnership, function(req, re
       req.flash("success", "Comment deleted");
       res.redirect("/campgrounds/"+req.params.id);
     }
-      
-  })
+  });
 });
 
 module.exports = router;

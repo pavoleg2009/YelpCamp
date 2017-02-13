@@ -1,12 +1,10 @@
+// Campgound routes
+
 var express         = require("express");
 var router          = express.Router();
 var Campground      = require("../models/campground");
 var Comment         = require("../models/comment");
 var middleware      = require("../middleware/index.js");
-
-//================================
-//     CAMPGROUDSs ROUTES 
-//================================
 
 // INDEX - show all campgrounds
 router.get("/", function(req, res){
@@ -58,7 +56,6 @@ router.get("/:id", function(req, res){
     if(err){
       console.log(err);
     } else {
-      //console.log(foundCampground);
       //render show template with that ID      //r
       res.render("campgrounds/show",{campground: foundCampground});
     }
@@ -88,9 +85,9 @@ router.put("/:id", middleware.checkCampgroundOwnership, function(req,res){
 router.delete("/:id", middleware.checkCampgroundOwnership, function(req, res){
   Campground.findByIdAndRemove(req.params.id, function(err){
     if(err){
-      res.redirect("/campgrounds")
+      res.redirect("/campgrounds");
     } else {
-      res.redirect("/campgrounds")
+      res.redirect("/campgrounds");
     }
   });
 });

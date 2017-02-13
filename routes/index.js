@@ -5,14 +5,12 @@ var Comment         = require("../models/comment");
 var User            = require("../models/user");
 var passport        = require("passport");
 
-// LANDING
+// Landing route
 router.get("/", function(req, res){
   res.render("landing");
 });
 
-//================================
-//     AUTH ROUTES 
-//================================
+// Auth routes 
 
 // Show register form
 router.get("/register", function(req, res){

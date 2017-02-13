@@ -1,9 +1,6 @@
+// Campground schema setup
 
 var mongoose    = require("mongoose");
-// ERROR IN THE NEXT LINE
-//var Comment = require("./models/comment");
-
-//SCHEMA SETUP
 
 var campgroundSchema = new mongoose.Schema({
   name: String,
